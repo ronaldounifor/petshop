@@ -1,32 +1,33 @@
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>PETSHOP</title>
-    </head>
-    <body>
-        <h2>Seja bem-vindo(a)!</h2>
-        <h3>Esta página é excelente!</h3>
+<head>
+    <title>PETSHOP</title>
+</head>
+<body>
+    <h2>Seja bem-vindo(a)!</h2>
+    <h3>Esta página é excelente!</h3>
 
-        <div id="results"></div>
+    <div id="results"></div>
 
-        <script src="https://www.parsecdn.com/js/parse-1.18.0.min.js"></script>
-        <script>
+    <script src="https://www.parsecdn.com/js/parse-1.18.0.min.js"></script>
+    <script>
+        window.onload = async () => {
             Parse.initialize(
-            '2Wrhw9h08i0ict9L1L240bMZEMV3pLWzOdryqRrL',
-            'b7jSItdXcgXSDJAGdHX3KiRyMDOgBC2LfgZmuPwb'
+                '2Wrhw9h08i0ict9L1L240bMZEMV3pLWzOdryqRrL',
+                'b7jSItdXcgXSDJAGdHX3KiRyMDOgBC2LfgZmuPwb'
             );
             Parse.serverURL = 'https://parseapi.back4app.com';
-        </script>
-        <script>
-            (async () => {
+            
             const Produto = Parse.Object.extend('Produto');
             const query = new Parse.Query(Produto);
             try {
                 const results = await query.find();
+                console.log('Resultados da consulta:', results); // Adiciona um log dos resultados da consulta
                 const areaResultados = document.getElementById('results');
                 for (const object of results) {
-                    const nome = object.get('nome')
-                    const descricao = object.get('descricao')
-                    const preco = object.get('preco')
+                    const nome = object.get('nome');
+                    const descricao = object.get('descricao');
+                    const preco = object.get('preco');
                     const elemento = document.createElement('div');
                     elemento.innerHTML = `
                         <p>Nome: ${nome}</p>
@@ -39,7 +40,7 @@
             } catch (error) {
                 console.error('Erro ao buscar dados', error);
             }
-            })();
-        </script>
-    </body>
+        };
+    </script>
+</body>
 </html>
