@@ -14,7 +14,7 @@ async function mostrarProdutos() {
         const resultado = await query.find();
 
         resultado.forEach((data) => {
-			dadosFinanceiros.push({
+			produtos.push({
                 nome: data.get(`nome`),
                 descricao: data.get(`descricao`),
                 preco: data.get(`preco`),
