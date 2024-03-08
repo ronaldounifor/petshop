@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <title>PETSHOP</title>
-    <script src="https://www.parsecdn.com/js/parse-1.18.0.min.js"></script>
-    <script>
+    <script
+			type="text/javascript"
+			src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <script type="text/javascript">
         Parse.initialize(
             '2Wrhw9h08i0ict9L1L240bMZEMV3pLWzOdryqRrL',
             'b7jSItdXcgXSDJAGdHX3KiRyMDOgBC2LfgZmuPwb'
@@ -16,32 +18,5 @@
     <h3>Esta página é excelente!</h3>
 
     <div id="results"></div>
-
-    <script>
-        window.onload = async () => {
-            const Produto = Parse.Object.extend('Produto');
-            const query = new Parse.Query(Produto);
-            try {
-                const results = await query.find();
-                console.log('Resultados da consulta:', results); // Adiciona um log dos resultados da consulta
-                const areaResultados = document.getElementById('results');
-                for (const object of results) {
-                    const nome = object.get('nome');
-                    const descricao = object.get('descricao');
-                    const preco = object.get('preco');
-                    const elemento = document.createElement('div');
-                    elemento.innerHTML = `
-                        <p>Nome: ${nome}</p>
-                        <p>Descrição: ${descricao}</p>
-                        <p>Preço: ${preco}</p>
-                        <hr>
-                    `;
-                    areaResultados.appendChild(elemento);
-                }
-            } catch (error) {
-                console.error('Erro ao buscar dados', error);
-            }
-        };
-    </script>
 </body>
 </html>
