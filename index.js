@@ -20,7 +20,7 @@ async function mostrarProdutos() {
                 preco: data.get(`preco`),
             });
             imprimir(data);
-        }
+        })
     } catch (error) {
         console.error('Erro ao buscar dados', error);
     }
