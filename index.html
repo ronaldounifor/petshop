@@ -11,8 +11,8 @@
         <script src="https://www.parsecdn.com/js/parse-1.18.0.min.js"></script>
         <script>
             (async () => {
-            const Teste = Parse.Object.extend('Teste');
-            const query = new Parse.Query(Teste);
+            const Produto = Parse.Object.extend('Produto');
+            const query = new Parse.Query(Produto);
             try {
                 const results = await query.find();
                 const areaResultados = document.getElementById('results');
