@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
     <head>
         <title>PETSHOP</title>
     </head>
@@ -7,28 +7,34 @@
         <h3>Esta página é excelente!</h3>
 
         <div id="results"></div>
+
         <script src="https://www.parsecdn.com/js/parse-1.18.0.min.js"></script>
         <script>
             (async () => {
-            const Produto = Parse.Object.extend('Produto');
-            const query = new Parse.Query(Produto);
-            // You can also query by using a parameter of an object
+            const Teste = Parse.Object.extend('Teste');
+            const query = new Parse.Query(Teste);
+            // Você também pode adicionar um filtro à consulta, se necessário
             // query.equalTo('objectId', 'xKue915KBG');
             try {
                 const results = await query.find();
+                const areaResultados = document.getElementById('results');
                 for (const object of results) {
-                    // Access the Parse Object attributes using the .GET method
-                    const nome = object.get('nome')
-                    const descricao = object.get('descricao')
-                    const preco = object.get('preco')
-                    const elemento = document.createElement('div');
-                    elemento.innerHTML = '
+                const nome = object.get('nome');
+                const preco = object.get('preco');
+                const esgotado = object.get('esgotado');
+                // Criar elementos HTML para exibir os resultados
+                const elemento = document.createElement('div');
+                elemento.innerHTML = `
                     <p>Nome: ${nome}</p>
+                    <p>Preço: ${preco}</p>
+                    <p>Esgotado: ${esgotado}</p>
                     <hr>
-                    ';
+                `;
+                // Adicionar o elemento criado ao contêiner de resultados
+                areaResultados.appendChild(elemento);
                 }
             } catch (error) {
-                console.error('Error while fetching Produto', error);
+                console.error('Erro ao buscar dados', error);
             }
             })();
         </script>
