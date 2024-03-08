@@ -8,14 +8,13 @@
 
         <div id="results"></div>
 
-        <script src="node_modules/parse/dist/parse.min.js"></script>
-
+        <script src="https://www.parsecdn.com/js/parse-1.18.0.min.js"></script>
         <script>
-            Parse.serverURL = 'https://parseapi.back4app.com';
             Parse.initialize(
             '2Wrhw9h08i0ict9L1L240bMZEMV3pLWzOdryqRrL',
             'b7jSItdXcgXSDJAGdHX3KiRyMDOgBC2LfgZmuPwb'
             );
+            Parse.serverURL = 'https://parseapi.back4app.com';
         </script>
         <script>
             (async () => {
@@ -31,8 +30,8 @@
                     const elemento = document.createElement('div');
                     elemento.innerHTML = `
                         <p>Nome: ${nome}</p>
+                        <p>Descrição: ${descricao}</p>
                         <p>Preço: ${preco}</p>
-                        <p>Esgotado: ${esgotado}</p>
                         <hr>
                     `;
                     areaResultados.appendChild(elemento);
