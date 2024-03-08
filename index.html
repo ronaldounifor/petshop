@@ -13,25 +13,21 @@
             (async () => {
             const Teste = Parse.Object.extend('Teste');
             const query = new Parse.Query(Teste);
-            // Você também pode adicionar um filtro à consulta, se necessário
-            // query.equalTo('objectId', 'xKue915KBG');
             try {
                 const results = await query.find();
                 const areaResultados = document.getElementById('results');
                 for (const object of results) {
-                const nome = object.get('nome');
-                const preco = object.get('preco');
-                const esgotado = object.get('esgotado');
-                // Criar elementos HTML para exibir os resultados
-                const elemento = document.createElement('div');
-                elemento.innerHTML = `
-                    <p>Nome: ${nome}</p>
-                    <p>Preço: ${preco}</p>
-                    <p>Esgotado: ${esgotado}</p>
-                    <hr>
-                `;
-                // Adicionar o elemento criado ao contêiner de resultados
-                areaResultados.appendChild(elemento);
+                    const nome = object.get('nome')
+                    const descricao = object.get('descricao')
+                    const preco = object.get('preco')
+                    const elemento = document.createElement('div');
+                    elemento.innerHTML = `
+                        <p>Nome: ${nome}</p>
+                        <p>Preço: ${preco}</p>
+                        <p>Esgotado: ${esgotado}</p>
+                        <hr>
+                    `;
+                    areaResultados.appendChild(elemento);
                 }
             } catch (error) {
                 console.error('Erro ao buscar dados', error);
