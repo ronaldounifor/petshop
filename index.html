@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
     <title>PETSHOP</title>
+    <script src="https://www.parsecdn.com/js/parse-1.18.0.min.js"></script>
+    <script>
+        Parse.initialize(
+            '2Wrhw9h08i0ict9L1L240bMZEMV3pLWzOdryqRrL',
+            'b7jSItdXcgXSDJAGdHX3KiRyMDOgBC2LfgZmuPwb'
+        );
+        Parse.serverURL = 'https://parseapi.back4app.com';
+    </script>
 </head>
 <body>
     <h2>Seja bem-vindo(a)!</h2>
@@ -9,15 +17,8 @@
 
     <div id="results"></div>
 
-    <script src="https://www.parsecdn.com/js/parse-1.18.0.min.js"></script>
     <script>
         window.onload = async () => {
-            Parse.initialize(
-                '2Wrhw9h08i0ict9L1L240bMZEMV3pLWzOdryqRrL',
-                'b7jSItdXcgXSDJAGdHX3KiRyMDOgBC2LfgZmuPwb'
-            );
-            Parse.serverURL = 'https://parseapi.back4app.com';
-            
             const Produto = Parse.Object.extend('Produto');
             const query = new Parse.Query(Produto);
             try {
